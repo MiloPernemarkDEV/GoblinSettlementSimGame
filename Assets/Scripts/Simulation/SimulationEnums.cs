@@ -1,4 +1,15 @@
-public enum PopulationType
+public enum ResourceType
 {
-    PeasantGoblin,
+    Wood, 
+    Stone,
+    GoldCoin,
+    SilverCoin,
+    DarkEnergy
+}
+
+public enum ResourceAction
+{
+    Add,
+    Trade,
+    Use
 }

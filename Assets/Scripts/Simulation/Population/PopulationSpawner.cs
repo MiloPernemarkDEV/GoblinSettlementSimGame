@@ -18,7 +18,7 @@ public class PopulationSpawner : MonoBehaviour
     void SpawnPopulation(string populationId)
     {
         Debug.Log("Spawning " + populationId);
-        Debug.Log($"Total Population: {SimulationRuntime.Instance.TotalPopulation}");
+        Debug.Log($"Total Population: {SimulationRuntime.Instance.Model.TotalPopulation}");
     }
     
 }

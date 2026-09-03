@@ -18,8 +18,8 @@ public class InteractiveHud : MonoBehaviour
         button.clicked += () =>
         {
             
-            SimulationRuntime.Instance.TotalPopulation++;
-            counter.text = $"Total Population: {SimulationRuntime.Instance.TotalPopulation}";
+            SimulationRuntime.Instance.Model.TotalPopulation++;
+            counter.text = $"Total Population: {SimulationRuntime.Instance.Model.TotalPopulation}";
             EventRelay.Instance.SimulationEvents.PopulationAdded.TriggerEvent(ConstantIds.RandomPopulation);
             // Broadcast event 
         };
