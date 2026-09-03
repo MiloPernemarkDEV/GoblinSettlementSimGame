@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 915dae6f0fac4e23a3584a66e3b876ca, type: 3}
   m_Name: Goblin_Figther
   m_EditorClassIdentifier: Assembly-CSharp::AITypeConfig
-  npcType: 0
-  npcAffinity: 0
+  goblinType: 0
+  goblinAffinity: 1

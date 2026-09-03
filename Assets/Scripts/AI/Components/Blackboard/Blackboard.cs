@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
-public class Blackboard
+public class Blackboard : MonoBehaviour
 {
     private Dictionary<string, IBlackboardKey> keys = new Dictionary<string, IBlackboardKey>();
 
