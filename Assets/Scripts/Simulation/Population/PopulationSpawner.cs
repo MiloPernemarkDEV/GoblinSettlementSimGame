@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PopulationSpawner : MonoBehaviour
@@ -20,6 +21,7 @@ public class PopulationSpawner : MonoBehaviour
         SimulationRuntime.Instance.Model.TotalPopulation += populationChange.amount;
         Debug.Log("Spawning " + populationChange.Id);
         Debug.Log($"Total Population: {SimulationRuntime.Instance.Model.TotalPopulation}");
+        
+        //Spawn(AIFactory(populationChange.Id)) 
     }
-    
 }

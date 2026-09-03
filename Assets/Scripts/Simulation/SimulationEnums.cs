@@ -13,3 +13,16 @@ public enum ResourceAction
     Trade,
     Use
 }
+
+public enum GoblinType
+{
+    Goblin,
+    HobGoblin,
+}
+
+public enum GoblinAffinity
+{
+    Fighting,
+    Mining,
+    Cooking
+}
