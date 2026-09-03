@@ -3,10 +3,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "StringPayloadEvent", menuName = "Event Channels/StringPayloadEvent")]
 public class StringPayloadEvent : ScriptableObject
 {
-    public event System.Action<string> OnEventTriggered;
+    public event System.Action<string> Event;
 
-    public void TriggerEvent(string payload)
+    public void Ping(string payload)
     {
-        OnEventTriggered?.Invoke(payload);
+        Event?.Invoke(payload);
     }
 }

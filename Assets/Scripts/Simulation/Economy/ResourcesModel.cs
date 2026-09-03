@@ -28,7 +28,7 @@ public class ResourcesModel
             return;
         }
         
-        EventRelay.Instance.ResourceEvents.ResourceActionHappened.TriggerEvent(
+        EventRelay.Instance.ResourceEvents.ResourceActionHappened.Ping(
             new ResourceChange
             {
                 ResourceType = resourceType,

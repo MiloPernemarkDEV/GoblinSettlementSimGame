@@ -1,5 +1,7 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Label text="Total Population:" name="TotalPopulation" style="height: 22px; width: 105px; align-items: center; justify-content: center; align-self: flex-start; right: 0; -unity-text-align: lower-left;"/>
-    <ui:GroupBox style="height: 233px;"/>
-    <ui:Button text="Add Population" name="AddPopulation" style="right: 0; justify-content: flex-start; align-self: flex-end; align-items: flex-end;"/>
+    <ui:GroupBox name="hud" style="height: 233px;"/>
+    <ui:GroupBox name="popups" style="height: 233px;"/>
+    <ui:Label text="Total Population:" name="total-population-label" style="height: 22px; width: 105px; align-items: flex-start; justify-content: center; align-self: flex-end; right: 80%; -unity-text-align: lower-left; position: absolute; top: 80%; left: 0%; bottom: 0%;"/>
+    <ui:Button text="Add Population" name="add-population-button" style="right: 0; justify-content: flex-start; align-self: flex-end; align-items: flex-end;"/>
+    <ui:Label text="Spawned +1 Goblin" name="add-population-popup-label" style="height: 37px; position: absolute; top: 5%; left: 80%; width: 132px; display: flex; bottom: 80%; opacity: 0;"/>
 </ui:UXML>
