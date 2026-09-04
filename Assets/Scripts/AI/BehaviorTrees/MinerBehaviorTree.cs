@@ -7,6 +7,13 @@ public class MinerBehaviorTree : BehaviorTree
         
     }
 
+    protected override void RegisterKeys(Blackboard blackboard)
+    {
+        blackboard.AddKey(BBConstants.IsHungry, false);
+        blackboard.AddKey(BBConstants.IsCurrentlyMining, false);
+        blackboard.AddKey(BBConstants.IsMiningFinished, false);
+    }
+
     protected override BTNode SetupTree()
     {
         return new BTSelector(bb, new List<BTNode>

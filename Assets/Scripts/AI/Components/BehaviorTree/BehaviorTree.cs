@@ -1,6 +1,4 @@
-using UnityEngine;
-
-public abstract class BehaviorTree : MonoBehaviour
+public abstract class BehaviorTree 
  {
      public Blackboard bb;
      protected BTNode rootNode;
@@ -10,11 +8,12 @@ public abstract class BehaviorTree : MonoBehaviour
          bb = blackboard;
      }
 
-     public void Initialize()
+     public void Initialize(Blackboard blackboard)
      {
+         bb = blackboard;
          rootNode = SetupTree();
      }
-     
+     protected virtual void RegisterKeys(Blackboard blackboard) { }
      protected abstract BTNode SetupTree();
 
      public void Tick()
