@@ -12,6 +12,10 @@ public class Blackboard : MonoBehaviour
         {
             keys.Add(name, new BlackboardKey<T>(defaultValue));
         }
+        else
+        {
+            Debug.LogWarning($"Blackboard key {name} is already registered");
+        }
     }
 
     public T GetValue<T>(string name)
@@ -20,6 +24,7 @@ public class Blackboard : MonoBehaviour
         {
             return typedKey.Value;
         }
+        Debug.LogError($"Blackboard key {name} not found");
         
         return default; 
     }
@@ -29,6 +34,10 @@ public class Blackboard : MonoBehaviour
         if (keys.TryGetValue(name, out var key) && key is BlackboardKey<T> typedKey)
         {
             typedKey.Value = value;
+        }
+        else
+        {
+            Debug.LogWarning($"Blackboard key {name} not found");
         }
     }
 }

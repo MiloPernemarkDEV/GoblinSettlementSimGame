@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 public class BTSelector : BTNode
@@ -13,10 +14,16 @@ public class BTSelector : BTNode
     {
         foreach (var child in children)
         {
-            NodeState childState = child.Evaluate();
-            if (childState == NodeState.Success)
+            switch (child.Evaluate())
             {
-                return NodeState.Success;
+                case NodeState.Running:
+                    return NodeState.Running;
+                case NodeState.Success:
+                    return NodeState.Success;
+                case NodeState.Failure:
+                    continue;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
         return NodeState.Failure;

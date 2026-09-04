@@ -1,6 +1,6 @@
-using UnityEngine.Audio;
+using UnityEngine;
 
-public abstract class BehaviorTree
+public abstract class BehaviorTree : MonoBehaviour
  {
      public Blackboard bb;
      protected BTNode rootNode;
@@ -8,8 +8,11 @@ public abstract class BehaviorTree
      public BehaviorTree(Blackboard blackboard)
      {
          bb = blackboard;
-         rootNode = SetupTree();
+     }
 
+     public void Initialize()
+     {
+         rootNode = SetupTree();
      }
      
      protected abstract BTNode SetupTree();

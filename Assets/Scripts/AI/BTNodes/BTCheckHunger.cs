@@ -6,7 +6,7 @@ public class BTCheckHunger : BTNode
 
     public override NodeState Evaluate()
     {
-        var isHungry = blackboard.GetValue<bool>("isHungry");
+        var isHungry = blackboard.GetValue<bool>(BBConstants.IsHungry);
 
         if (!isHungry) return NodeState.Failure;
         

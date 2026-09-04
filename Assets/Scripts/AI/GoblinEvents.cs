@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GoblinEvents : Singleton<SimulationEvents>
+public class GoblinEvents : Singleton<GoblinEvents>
 {
 	[SerializeField] private StatusPayloadEvent mining;
 

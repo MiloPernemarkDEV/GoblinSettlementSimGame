@@ -19,12 +19,12 @@ public class BTMine : BTNode
                 EventRelay.Instance.GoblinEvents.Mining.Ping(EventStatus.Started);
             }
             
-            var isMiningFinished = blackboard.GetValue<bool>(BBConstants.isMiningFinished);
+            var isMiningFinished = blackboard.GetValue<bool>(BBConstants.IsMiningFinished);
 
             if (isMiningFinished)
             {
                 blackboard.SetValue(BBConstants.IsCurrentlyMining, false);
-                blackboard.SetValue(BBConstants.isMiningFinished, false);
+                blackboard.SetValue(BBConstants.IsMiningFinished, false);
 
                 return NodeState.Success;
             }
