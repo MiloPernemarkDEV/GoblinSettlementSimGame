@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class PopulationSpawner : MonoBehaviour
 {
+    [SerializeField] private GameObject goblinPrefab;
+    
     public void OnEnable()
     {
         EventRelay.Instance.SimulationEvents.PopulationAdded.Event += SpawnPopulation;
@@ -16,12 +18,13 @@ public class PopulationSpawner : MonoBehaviour
         }
     }
 
-    void SpawnPopulation(PopulationChange populationChange)
+    private void SpawnPopulation(PopulationChange populationChange)
     {
         SimulationRuntime.Instance.Model.TotalPopulation += populationChange.amount;
-        Debug.Log("Spawning " + populationChange.Id);
-        Debug.Log($"Total Population: {SimulationRuntime.Instance.Model.TotalPopulation}");
         
-        //Spawn(AIFactory(populationChange.Id)) 
+        for (var i = 0; i < populationChange.amount; i++)
+        {
+            Instantiate(goblinPrefab, SpawnUtility.GenerateSpawnVector(), Quaternion.identity);
+        }
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine.Serialization;
 
 
 [CreateAssetMenu(fileName = "AITypeConfig", menuName = "AI/AITypeConfig", order = 0)]
-public class AITypeConfig : ScriptableObject
+public class GoblinConfig : ScriptableObject
 {
     [FormerlySerializedAs("npcType")] [SerializeField] private GoblinType goblinType;
     [FormerlySerializedAs("npcAffinity")] [SerializeField] private GoblinAffinity goblinAffinity;

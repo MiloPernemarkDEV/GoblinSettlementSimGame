@@ -4,6 +4,7 @@ using UnityEngine;
 public class GoblinAgent :  MonoBehaviour
 {
     [SerializeField] private float tickInterval = 0.25f;
+    [SerializeField] private GoblinConfig config; 
     
     private Blackboard blackboard;
     private BehaviorTree tree;
@@ -11,7 +12,13 @@ public class GoblinAgent :  MonoBehaviour
     
     private void Awake()
     {
+        if (config.GoblinAffinity == GoblinAffinity.Mining)
+        {
+            // Move tree assignment depending on affinity 
+        }
+        
         tree = new MinerBehaviorTree(blackboard);
+        
         tree.Initialize(blackboard);
     }
     
