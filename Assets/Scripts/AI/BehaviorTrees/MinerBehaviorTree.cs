@@ -1,10 +1,14 @@
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.AI;
 
 public class MinerBehaviorTree : BehaviorTree
 {
-    public MinerBehaviorTree(Blackboard blackboard) : base(blackboard)
+    private NavMeshAgent _agent;
+
+    public MinerBehaviorTree(Blackboard blackboard, NavMeshAgent agent) : base(blackboard)
     {
-        
+        _agent = agent;
     }
 
     protected override void RegisterKeys(Blackboard blackboard)
@@ -12,6 +16,9 @@ public class MinerBehaviorTree : BehaviorTree
         blackboard.AddKey(BBConstants.IsHungry, false);
         blackboard.AddKey(BBConstants.IsCurrentlyMining, false);
         blackboard.AddKey(BBConstants.IsMiningFinished, false);
+        blackboard.AddKey(BBConstants.TargetMiningSite, Vector3.zero);
+        blackboard.AddKey(BBConstants.IsAtMiningSite, false);
+        blackboard.AddKey(BBConstants.NavMeshAgent, _agent);
     }
 
     protected override BTNode SetupTree()
@@ -19,8 +26,11 @@ public class MinerBehaviorTree : BehaviorTree
         return new BTSelector(bb, new List<BTNode>
         {
             new BTCheckHunger(bb),
-            new BTMine(bb)
+            new BTSequence(bb, new List<BTNode>
+            {
+                new BTMoveTo(bb),
+                new BTMine(bb)
+            })
         });
     }
-
 }

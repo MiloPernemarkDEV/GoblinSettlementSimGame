@@ -11,6 +11,7 @@ public abstract class BehaviorTree
      public void Initialize(Blackboard blackboard)
      {
          bb = blackboard;
+         RegisterKeys(bb);
          rootNode = SetupTree();
      }
      protected virtual void RegisterKeys(Blackboard blackboard) { }

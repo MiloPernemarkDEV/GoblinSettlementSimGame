@@ -4,6 +4,7 @@ using UnityEngine;
 public class PopulationSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject goblinPrefab;
+    [SerializeField] private int SpawnRadius;
     
     public void OnEnable()
     {
@@ -12,10 +13,7 @@ public class PopulationSpawner : MonoBehaviour
     
     private void OnDisable()
     {
-        if (EventRelay.Instance != null)
-        {
-            EventRelay.Instance.SimulationEvents.PopulationAdded.Event -= SpawnPopulation;
-        }
+        EventRelay.Instance.SimulationEvents.PopulationAdded.Event -= SpawnPopulation;
     }
 
     private void SpawnPopulation(PopulationChange populationChange)
@@ -24,7 +22,7 @@ public class PopulationSpawner : MonoBehaviour
         
         for (var i = 0; i < populationChange.amount; i++)
         {
-            Instantiate(goblinPrefab, SpawnUtility.GenerateSpawnVector(), Quaternion.identity);
+            Instantiate(goblinPrefab, SpawnUtility.GenerateSpawnVector(SpawnRadius, false), Quaternion.identity);
         }
     }
 }

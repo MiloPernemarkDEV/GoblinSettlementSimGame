@@ -46,7 +46,7 @@ public class InteractiveHud : MonoBehaviour
                 new PopulationChange
                 {
                     Id = ConstantIds.PeasantGoblin,
-                    amount = 5
+                    amount = 20
                 }
             );
         };
