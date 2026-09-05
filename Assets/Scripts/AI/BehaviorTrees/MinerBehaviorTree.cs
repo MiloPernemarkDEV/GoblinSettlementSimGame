@@ -28,7 +28,7 @@ public class MinerBehaviorTree : BehaviorTree
             new BTCheckHunger(bb),
             new BTSequence(bb, new List<BTNode>
             {
-                new BTMoveTo(bb),
+                new BTMoveToMine(bb),
                 new BTMine(bb)
             })
         });

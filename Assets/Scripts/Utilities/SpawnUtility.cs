@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 public static class SpawnUtility
 {
     public static Vector3 GenerateSpawnVector(int maxDistance, bool SpawnAtHouse = true)

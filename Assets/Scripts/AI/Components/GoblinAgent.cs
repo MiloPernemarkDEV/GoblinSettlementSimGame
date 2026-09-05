@@ -14,18 +14,20 @@ public class GoblinAgent :  MonoBehaviour
     private void Awake()
     {
         blackboard = GetComponent<Blackboard>();
-
-        if (config.GoblinAffinity == GoblinAffinity.Mining)
-        {
-            // Move tree assignment depending on affinity 
-        }
     }
 
     private void Start()
     {
-        tree = new MinerBehaviorTree(blackboard, agent);
-        
-        tree.Initialize(blackboard);
+        if (config.GoblinAffinity == GoblinAffinity.Mining)
+        {
+            tree = new MinerBehaviorTree(blackboard, agent);
+            tree.Initialize(blackboard);
+
+            tree.bb.SetValue(BBConstants.TargetMiningSite, MineSitesManager.Instance.GetMineSiteSpawn(transform.position));
+            Debug.Log($"Target Mining site = {tree.bb.GetValue<Vector3>(BBConstants.TargetMiningSite)}");
+        }
+
+        EventRelay.Instance.GoblinEvents.Mining.Subscribe += OnMiningFinished;
     }
 
     private void Update()
@@ -34,5 +36,13 @@ public class GoblinAgent :  MonoBehaviour
         if (tickTimer > 0f) return;
         tickTimer = tickInterval;
         tree.Tick();
+    }
+
+    private void OnMiningFinished(EventStatus status)
+    {
+        if (status == EventStatus.Finished)
+        {
+            tree.bb.SetValue(BBConstants.IsMiningFinished, true);
+        }
     }
 }

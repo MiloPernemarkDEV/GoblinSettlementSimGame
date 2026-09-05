@@ -55,6 +55,5 @@ public class InteractiveHud : MonoBehaviour
     private void OnPopulationAdded(PopulationChange populationChange)
     {
         totalPopulationLabel.text = $"Total Population: {SimulationRuntime.Instance.Model.TotalPopulation}";
-        addPopulationPopupLabel.text = "Spawned +1 " + ConstantIds.ToDisplayName(populationChange.Id);
     }
 }

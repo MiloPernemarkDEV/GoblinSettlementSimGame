@@ -3,5 +3,6 @@ public enum EventStatus
     Started,
     Success,
     Failure, 
-    Stopped
+    Stopped,
+    Finished
 }

@@ -3,18 +3,25 @@ using UnityEngine;
 
 public class MineSitesManager : Singleton<MineSitesManager>
 {
-    [SerializeField] private Dictionary<int, GameObject> mineSites = new Dictionary<int, GameObject>();
+    [SerializeField] private List<GameObject> mineSites = new List<GameObject>();
 
-    public Vector3 GetMineSiteSpawn()
+    public Vector3 GetMineSiteSpawn(Vector3 goblinPosition)
     {
-        var spawnIndex = Random.Range(0, mineSites.Count);
-        var i = 0;
-        foreach (var site in mineSites.Values)
+        int i = 0;
+        int index = -1;
+        var value = float.PositiveInfinity;
+        foreach (var site in mineSites)
         {
-            if (i++ == spawnIndex)
-                return site.transform.position;
-        }
+            float distance = Vector3.Distance(site.transform.position, goblinPosition);
+            if (distance < value)
+            {
+                index = i;
+                value = distance;
+            }
 
-        return Vector3.zero;
+            i++;
+        }
+        
+        return mineSites[index].transform.position;
     }
 }
